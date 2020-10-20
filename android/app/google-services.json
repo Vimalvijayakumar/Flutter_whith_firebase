@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "404347774412",
+    "firebase_url": "https://fluttertest-418bf.firebaseio.com",
+    "project_id": "fluttertest-418bf",
+    "storage_bucket": "fluttertest-418bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404347774412:android:a16bd60827e785a4812969",
+        "android_client_info": {
+          "package_name": "com.vimal.firebase_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "404347774412-76q7n4r9m2vff9jdr0tvhkghobv8eoif.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaI9mjdholhB7s_WEmBFDhrOlnp3xI1Gg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "404347774412-76q7n4r9m2vff9jdr0tvhkghobv8eoif.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
