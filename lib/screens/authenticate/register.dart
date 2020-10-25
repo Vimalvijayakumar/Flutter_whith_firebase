@@ -2,17 +2,18 @@ import 'package:firebase_flutter/services/auth.dart';
 import 'package:firebase_flutter/shared/constants.dart';
 import 'package:flutter/material.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
   final Function toggleView;
-  SignIn({this.toggleView});
+  Register({this.toggleView});
 
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
-  final _formkey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
+
   String email;
   String password;
   String error = '';
@@ -22,7 +23,7 @@ class _SignInState extends State<SignIn> {
       backgroundColor: Colors.brown[100],
       appBar: AppBar(
         backgroundColor: Colors.brown[400],
-        title: Text('Sign In'),
+        title: Text('SignUp'),
         elevation: 0.0,
         actions: <Widget>[
           FlatButton.icon(
@@ -30,13 +31,13 @@ class _SignInState extends State<SignIn> {
                 widget.toggleView();
               },
               icon: Icon(Icons.person),
-              label: Text("Register"))
+              label: Text("Sign In"))
         ],
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
         child: Form(
-            key: _formkey,
+            key: _formKey,
             child: Column(
               children: <Widget>[
                 SizedBox(
@@ -46,8 +47,7 @@ class _SignInState extends State<SignIn> {
                   decoration: textInputDecoration.copyWith(
                     hintText: 'Email',
                   ),
-                  validator: (val) =>
-                      val.isEmpty ? 'Enter email address' : null,
+                  validator: (val) => val.isEmpty ? 'Enter an email' : null,
                   onChanged: (val) {
                     setState(() {
                       email = val;
@@ -61,8 +61,9 @@ class _SignInState extends State<SignIn> {
                   decoration: textInputDecoration.copyWith(
                     hintText: 'Password',
                   ),
-                  validator: (val) =>
-                      val.length < 6 ? 'Enter valid password' : null,
+                  validator: (val) => val.length < 6
+                      ? 'Use minimum 6 charator for Password'
+                      : null,
                   onChanged: (val) {
                     setState(() {
                       password = val;
@@ -75,14 +76,14 @@ class _SignInState extends State<SignIn> {
                 ),
                 RaisedButton(
                     color: Colors.brown,
-                    child: Text('Sign In'),
+                    child: Text('Register'),
                     onPressed: () async {
-                      if (_formkey.currentState.validate()) {
-                        dynamic result = await _auth.signInWithEnailAndPassword(
-                            email, password);
+                      if (_formKey.currentState.validate()) {
+                        dynamic result = await _auth
+                            .registerWithEnailAndPassword(email, password);
                         if (result == null) {
                           setState(() {
-                            error = 'COULD NOT SIGN IN WITH THOSE CREDENTIALS';
+                            error = 'please enter a vlid email and password';
                           });
                         }
                       }
